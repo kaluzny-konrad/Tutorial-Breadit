@@ -3,14 +3,16 @@ import React from "react";
 import Image from "next/image";
 
 import { Avatar, AvatarFallback } from "@/components/ui/Avatar";
+import { Icons } from "./Icons";
+import { AvatarProps } from "@radix-ui/react-avatar";
 
-type Props = {
+interface Props extends AvatarProps {
   user: Pick<User, "name" | "image">;
-};
+}
 
-export default function UserAvatar({ user }: Props) {
+export default function UserAvatar({ user, ...props }: Props) {
   return (
-    <Avatar>
+    <Avatar {...props}>
       {user.image ? (
         <div className="relative aspect-square h-full w-full">
           <Image
@@ -21,7 +23,10 @@ export default function UserAvatar({ user }: Props) {
           />
         </div>
       ) : (
-        <AvatarFallback></AvatarFallback>
+        <AvatarFallback>
+          <span className="sr-only">{user?.name}</span>
+          <Icons.user className="h-4 w-4" />
+        </AvatarFallback>
       )}
     </Avatar>
   );
