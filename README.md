@@ -38,3 +38,5 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 4. after prisma change lets push:
    npx prisma db push
    npx prisma generate
+
+5. npx shadcn-ui@latest add dropdown-menu
