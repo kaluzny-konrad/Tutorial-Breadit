@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Icons } from "./Icons";
-import UserAuthForm from "./UserAuthForm";
+import { Icons } from "@/components/Icons";
+import UserAuthForm from "@/components/UserAuthForm";
 
 export default function SignIn() {
   return (

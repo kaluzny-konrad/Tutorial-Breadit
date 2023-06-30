@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 
-import { Button } from "./ui/Button";
 import { cn } from "@/lib/utils";
-import { Icons } from "./Icons";
 import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/Button";
+import { Icons } from "@/components/Icons";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 

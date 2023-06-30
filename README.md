@@ -40,3 +40,4 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
    npx prisma generate
 
 5. npx shadcn-ui@latest add dropdown-menu
+   npx shadcn-ui@latest add avatar
