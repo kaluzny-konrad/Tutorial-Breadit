@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { Icons } from "./Icons";
 import { buttonVariants } from "./ui/Button";
 
@@ -9,13 +10,17 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex gap-2 items-center">
           <Icons.logo className="w-8 h-8 sm:h-6 sm:w-6" />
-          <p className="hidden text-zinc-700 text-sm font-medium md:block">Breadit</p>
+          <p className="hidden text-zinc-700 text-sm font-medium md:block">
+            Breadit
+          </p>
         </Link>
 
         {/* Search */}
 
         {/* Auth */}
-        <Link href="/sign-in" className={buttonVariants()}>Sign In</Link>
+        <Link href="/sign-in" className={buttonVariants()}>
+          Sign In
+        </Link>
       </div>
     </div>
   );

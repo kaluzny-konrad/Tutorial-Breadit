@@ -1,8 +1,8 @@
+import Link from "next/link";
+
 import SignIn from "@/components/SignIn";
 import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import React from "react";
 
 export default function page() {
   return (

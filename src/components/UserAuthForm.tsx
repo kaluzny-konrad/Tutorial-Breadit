@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+
 import { Button } from "./ui/Button";
 import { cn } from "@/lib/utils";
-import { signIn } from "next-auth/react";
 import { Icons } from "./Icons";
 import { useToast } from "@/hooks/use-toast";
 
