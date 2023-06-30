@@ -13,6 +13,12 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 - Prisma + PlanetScale
 - NextAuth + Google OAuth
 
+Repo updated with:
+
+- npm-check
+- npm-check-updates
+- npm outdated
+
 # Instalation:
 
 1. npm install

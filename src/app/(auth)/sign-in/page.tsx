@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronLeftIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import SignIn from "@/components/SignIn";
@@ -15,6 +16,7 @@ export default function page() {
             "self-start -mt-20"
           )}
         >
+          <ChevronLeftIcon className="mr-2 h-4 w-4" />
           Home
         </Link>
 
