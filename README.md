@@ -4,6 +4,7 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 
 29.06: 21:51
 30.06: 59:17, 1:04:11, 1:40:24, 1:54:17
+01.07: 2:19:39
 
 # Tech stack:
 
@@ -47,3 +48,5 @@ Repo updated with:
 
 5. npx shadcn-ui@latest add dropdown-menu
    npx shadcn-ui@latest add avatar
+
+6. Prisma add Posts (SHIFT+ALT+F for auto complete)
