@@ -9,10 +9,12 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { CreateSubredditPayload } from "@/lib/validators/subreddit";
 import { toast } from "@/hooks/use-toast";
+import { useCustomToast } from "@/hooks/use-custom-toast";
 
 const Page = () => {
   const [input, setInput] = useState<string>("");
   const router = useRouter();
+  const { loginToast } = useCustomToast();
 
   const { mutate: createCommunity, isLoading } = useMutation({
     mutationFn: async () => {
@@ -41,13 +43,18 @@ const Page = () => {
           });
         }
         if (error.response?.status === 401) {
-          return toast({
-            title: "Unauthorized",
-            description: "You must be logged in to create a subreddit",
-            variant: "destructive",
-          });
+          return loginToast();
         }
       }
+
+      return toast({
+        title: "There was an error.",
+        description: "Could not create community. Please try again later.",
+        variant: "destructive",
+      });
+    },
+    onSuccess: (data: string) => {
+      router.push(`/r/${data}`);
     },
   });
 
