@@ -4,7 +4,7 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 
 29.06: 21:51
 30.06: 59:17, 1:04:11, 1:40:24, 1:54:17
-01.07: 2:19:39
+01.07: 2:19:39, 2:37:24, 2:50:25
 
 # Tech stack:
 
@@ -50,3 +50,5 @@ Repo updated with:
    npx shadcn-ui@latest add avatar
 
 6. Prisma add Posts (SHIFT+ALT+F for auto complete)
+
+7. npx shadcn-ui@latest add input
