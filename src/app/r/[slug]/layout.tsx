@@ -1,8 +1,10 @@
 import SubscribeLeaveToogle from "@/components/SubscribeLeaveToogle";
+import { buttonVariants } from "@/components/ui/Button";
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { format } from "date-fns";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function Layout({
@@ -98,6 +100,16 @@ export default async function Layout({
                   isSubscribed={isSubscribed}
                 />
               ) : null}
+
+              <Link
+                href={`/r/${subreddit.name}/submit`}
+                className={buttonVariants({
+                  variant: "outline",
+                  className: "w-full mt-2",
+                })}
+              >
+                Create Post
+              </Link>
             </dl>
           </div>
         </div>

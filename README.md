@@ -5,6 +5,7 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 29.06: 21:51
 30.06: 59:17, 1:04:11, 1:40:24, 1:54:17
 01.07: 2:19:39, 2:37:24, 2:50:25, 3:15:35, 3:34:00
+02.07: 4:21:47
 
 # Tech stack:
 
@@ -13,6 +14,7 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 - Tailwind CSS
 - Prisma + PlanetScale
 - NextAuth + Google OAuth
+- uploadthing.com
 
 Repo updated with:
 
@@ -52,3 +54,6 @@ Repo updated with:
 6. Prisma add Posts (SHIFT+ALT+F for auto complete)
 
 7. npx shadcn-ui@latest add input
+
+8. https://uploadthing.com/dashboard/lhjy0ned75
+   then .env
