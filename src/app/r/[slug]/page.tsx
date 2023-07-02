@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { getAuthSession } from "@/lib/auth";
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import MiniCreatePost from "@/components/MiniCreatePost";
+import PostFeed from "@/components/PostFeed";
 
 type Props = {
   params: {
@@ -41,7 +42,7 @@ export default async function page({ params }: Props) {
         r/{subreddit.name}
       </h1>
       <MiniCreatePost session={session} />
-      {/* <UserFeed /> */}
+      <PostFeed initialPosts={subreddit.posts} subredditName={subreddit.name} />
     </>
   );
 }
