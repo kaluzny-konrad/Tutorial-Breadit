@@ -14,9 +14,9 @@ type Props = {
 export default async function page({ params }: Props) {
   const { slug } = params;
 
-  const sessionPromise = getAuthSession();
+  const session = await getAuthSession();
 
-  const subredditPromise = db.subreddit.findFirst({
+  const subreddit = await db.subreddit.findFirst({
     where: {
       name: slug,
     },
@@ -33,11 +33,6 @@ export default async function page({ params }: Props) {
     },
   });
 
-  const [session, subreddit] = await Promise.all([
-    sessionPromise,
-    subredditPromise,
-  ]);
-
   if (!subreddit) return notFound();
 
   return (
@@ -46,6 +41,7 @@ export default async function page({ params }: Props) {
         r/{subreddit.name}
       </h1>
       <MiniCreatePost session={session} />
+      {/* <UserFeed /> */}
     </>
   );
 }

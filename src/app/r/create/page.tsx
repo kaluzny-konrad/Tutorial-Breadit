@@ -27,6 +27,7 @@ const Page = () => {
     },
     onError: (error: any) => {
       if (error instanceof AxiosError) {
+        if (error.response?.status === 401) return loginToast();
         if (error.response?.status === 409) {
           return toast({
             title: "Subreddit already exists",
@@ -41,9 +42,6 @@ const Page = () => {
               "Subreddit names must be between 3 and 21 characters long and can only contain letters, numbers, and underscores",
             variant: "destructive",
           });
-        }
-        if (error.response?.status === 401) {
-          return loginToast();
         }
       }
 
