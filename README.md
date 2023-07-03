@@ -57,3 +57,6 @@ Repo updated with:
 
 8. https://uploadthing.com/dashboard/lhjy0ned75
    then .env
+
+9. to look in data:
+   (npx prisma studio)

@@ -59,7 +59,11 @@ export default function PostFeed({ initialPosts, subredditName }: Props) {
         if (index === posts.length - 1) {
           return (
             <li key={post.id} ref={ref}>
-              <Post subredditName={post.subreddit.name} post={post} />
+              <Post
+                subredditName={post.subreddit.name}
+                post={post}
+                commentCount={post.comments.length}
+              />
             </li>
           );
         } else {
@@ -68,6 +72,7 @@ export default function PostFeed({ initialPosts, subredditName }: Props) {
               key={post.id}
               subredditName={post.subreddit.name}
               post={post}
+              commentCount={post.comments.length}
             />
           );
         }
