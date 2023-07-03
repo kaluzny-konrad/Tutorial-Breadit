@@ -63,6 +63,8 @@ export default function PostFeed({ initialPosts, subredditName }: Props) {
                 subredditName={post.subreddit.name}
                 post={post}
                 commentCount={post.comments.length}
+                votesSummary={votesSummary}
+                currentVote={currentVote}
               />
             </li>
           );
@@ -73,6 +75,8 @@ export default function PostFeed({ initialPosts, subredditName }: Props) {
               subredditName={post.subreddit.name}
               post={post}
               commentCount={post.comments.length}
+              votesSummary={votesSummary}
+              currentVote={currentVote}
             />
           );
         }

@@ -6,7 +6,7 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 - 30.06: 59:17, 1:04:11, 1:40:24, 1:54:17
 - 01.07: 2:19:39, 2:37:24, 2:50:25, 3:15:35, 3:34:00
 - 02.07: 4:21:47, 5:02:18, 5:32:08
-- 03.07: 5:50:58
+- 03.07: 5:50:58, 6:31:36
 
 # Tech stack:
 
@@ -16,6 +16,7 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 - Prisma + PlanetScale
 - NextAuth + Google OAuth
 - uploadthing.com
+- upstash for redis
 
 Repo updated with:
 
@@ -61,3 +62,5 @@ Repo updated with:
 
 9. to look in data:
    (npx prisma studio)
+
+10. init upstash and add to env
