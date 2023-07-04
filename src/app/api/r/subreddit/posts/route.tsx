@@ -60,6 +60,9 @@ export async function GET(req: Request) {
         author: true,
         comments: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
       take: parseInt(limit),
       skip: parseInt(limit) * (parseInt(page) - 1),
     });
