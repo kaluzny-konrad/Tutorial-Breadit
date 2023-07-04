@@ -1,6 +1,6 @@
 # Tutorial-Breadit
 
-From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
+From course: <https://www.youtube.com/watch?v=mSUKMfmLAt0>
 
 - 29.06: 21:51
 - 30.06: 59:17, 1:04:11, 1:40:24, 1:54:17
@@ -9,7 +9,7 @@ From course: https://www.youtube.com/watch?v=mSUKMfmLAt0
 - 03.07: 5:50:58, 6:31:36
 - 04.07: 6:57:01, 7:13:41
 
-# Tech stack:
+## Tech stack
 
 - Next.js
 - TypeScript
@@ -25,43 +25,43 @@ Repo updated with:
 - npm-check-updates
 - npm outdated
 
-# Instalation:
+## Instalation
 
 1. npm install
 
-# Process:
+## Process
 
 1. npx shadcn-ui@latest init (+npx shadcn-ui@latest add toast)
-2. Google Cloud Console secrets to .env:
-   https://console.cloud.google.com/
+1. Google Cloud Console secrets to .env:
+   <https://console.cloud.google.com/>
 
 - new project
 - oauth client id:
-  https://console.cloud.google.com/apis/credentials/oauthclient
+  <https://console.cloud.google.com/apis/credentials/oauthclient>
 - Web Application
-- Javascript origin: http://localhost:3000 (for local development)
-- Redirect URI: http://localhost:3000/api/auth/callback/google
+- Javascript origin: <http://localhost:3000> (for local development)
+- Redirect URI: <http://localhost:3000/api/auth/callback/google>
   6b. Copy secret to .env.local
 
-3. Prepare prisma db:
-   https://app.planetscale.com/
+1. Prepare prisma db:
+   <https://app.planetscale.com/>
    effect: DATABASE_URL in .env
 
-4. after prisma change lets push:
+1. after prisma change lets push:
    npx prisma db push
    npx prisma generate
 
-5. npx shadcn-ui@latest add dropdown-menu
+1. npx shadcn-ui@latest add dropdown-menu
    npx shadcn-ui@latest add avatar
 
-6. Prisma add Posts (SHIFT+ALT+F for auto complete)
+1. Prisma add Posts (SHIFT+ALT+F for auto complete)
 
-7. npx shadcn-ui@latest add input
+1. npx shadcn-ui@latest add input
 
-8. https://uploadthing.com/dashboard/lhjy0ned75
+1. <https://uploadthing.com/dashboard/lhjy0ned75>
    then .env
 
-9. to look in data:
+1. to look in data:
    (npx prisma studio)
 
-10. init upstash and add to env
+1. init upstash and add to env
