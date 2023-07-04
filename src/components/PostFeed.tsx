@@ -6,7 +6,7 @@ import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Post from "./Post";
 
 type Props = {
@@ -27,7 +27,7 @@ export default function PostFeed({ initialPosts, subredditName }: Props) {
     ["infinite-query"],
     async ({ pageParam = 1 }) => {
       const query =
-        `/api/posts?limit=${INFINITE_SCROLLING_PAGINATION_RESULTS}&page=${pageParam}` +
+        `/api/r/subreddit/posts?limit=${INFINITE_SCROLLING_PAGINATION_RESULTS}&page=${pageParam}` +
         (!!subredditName ? `&subredditName=${subredditName}` : "");
 
       const { data } = await axios.get(query);
@@ -40,6 +40,12 @@ export default function PostFeed({ initialPosts, subredditName }: Props) {
       initialData: { pages: [initialPosts], pageParams: [1] },
     }
   );
+
+  useEffect(() => {
+    if (entry?.isIntersecting && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [entry, fetchNextPage]);
 
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 

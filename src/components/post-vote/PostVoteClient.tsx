@@ -10,7 +10,8 @@ import { ArrowBigDown, ArrowBigUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
 import { PostVoteRequest } from "@/lib/validators/vote";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { toast } from "@/hooks/use-toast";
 
 type Props = {
   postId: string;
@@ -32,7 +33,7 @@ export default function PostVoteClient({
     setCurrentVote(initialVote);
   }, [initialVote]);
 
-  const {} = useMutation({
+  const { mutate: vote } = useMutation({
     mutationFn: async (voteType: VoteType) => {
       const payload: PostVoteRequest = {
         postId,
@@ -41,11 +42,50 @@ export default function PostVoteClient({
 
       await axios.patch("/api/r/subreddit/post/vote", payload);
     },
+    onError: (error, voteType) => {
+      if (voteType === "UP") {
+        console.log("onError, UP (-1)");
+        setVotesSummary((prev) => prev - 1);
+      } else if (voteType === "DOWN") setVotesSummary((prev) => prev + 1);
+      setCurrentVote(prevVote);
+
+      if (error instanceof AxiosError) {
+        if (error.response?.status === 401) {
+          loginToast();
+        }
+      }
+
+      return toast({
+        title: "Something went wrong",
+        description: "Your vote was not counted. Please try again.",
+        variant: "destructive",
+      });
+    },
+    onMutate: (voteType: VoteType) => {
+      if (currentVote === voteType) {
+        if (voteType === "UP") {
+          console.log("onMutate, CurVote=VoteType, UP (-1)");
+          setVotesSummary((prev) => prev - 1);
+        } else if (voteType === "DOWN") setVotesSummary((prev) => prev + 1);
+        setCurrentVote(undefined);
+      } else {
+        if (voteType === "UP")
+          setVotesSummary((prev) => prev + (currentVote ? 2 : 1));
+        else if (voteType === "DOWN")
+          setVotesSummary((prev) => prev - (currentVote ? 2 : 1));
+        setCurrentVote(voteType);
+      }
+    },
   });
 
   return (
     <div className="flex sm:flex-col gap-4 sm:gap-0 pr-6 sm:w-20 pb-4 sm:pb-0">
-      <Button size={"sm"} variant={"ghost"} aria-label="upvote">
+      <Button
+        onClick={() => vote("UP")}
+        size={"sm"}
+        variant={"ghost"}
+        aria-label="upvote"
+      >
         <ArrowBigUp
           className={cn("h-5 w-5 text-zinc-700", {
             "text-emerald-500 fill-emerald-500": currentVote === "UP",
@@ -57,7 +97,12 @@ export default function PostVoteClient({
         {votesSummary}
       </p>
 
-      <Button size={"sm"} variant={"ghost"} aria-label="downvote">
+      <Button
+        onClick={() => vote("DOWN")}
+        size={"sm"}
+        variant={"ghost"}
+        aria-label="downvote"
+      >
         <ArrowBigDown
           className={cn("h-5 w-5 text-zinc-700", {
             "text-red-500 fill-red-500": currentVote === "DOWN",
