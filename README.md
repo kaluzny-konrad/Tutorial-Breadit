@@ -8,7 +8,7 @@ From course: <https://www.youtube.com/watch?v=mSUKMfmLAt0>
 - 02.07: 4:21:47, 5:02:18, 5:32:08
 - 03.07: 5:50:58, 6:31:36
 - 04.07: 6:57:01, 7:13:41
-- 05.07: 7:32:00, 7:38:49
+- 05.07: 7:32:00, 7:38:49, 8:05:27
 
 ## Tech stack
 
@@ -66,3 +66,6 @@ Repo updated with:
    (npx prisma studio)
 
 1. init upstash and add to env
+
+1. npx shadcn-ui@latest add label
+npx shadcn-ui@latest add textarea
