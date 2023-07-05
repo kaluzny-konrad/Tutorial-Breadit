@@ -52,7 +52,7 @@ export default function Post({
               </>
             ) : null}
             <span>Posted by u/{post?.author?.name}</span>{" "}
-            {formatTimeToNow(post.createdAt)}
+            {formatTimeToNow(new Date(post.createdAt))}
           </div>
 
           <a href={`/r/${subredditName}/post/${post.id}`}>
@@ -77,7 +77,7 @@ export default function Post({
       <div className="bg-gray-50 z-20 text-sm p-4 sm:px-6">
         <a
           className="w-fit flex items-center gap-2"
-          href={`r/${subredditName}/post/${post.id}`}
+          href={`/r/${subredditName}/post/${post.id}`}
         >
           <MessageSquare className="h-4 w-4" /> {commentCount} comments
         </a>

@@ -44,7 +44,6 @@ export default function PostVoteClient({
     },
     onError: (error, voteType) => {
       if (voteType === "UP") {
-        console.log("onError, UP (-1)");
         setVotesSummary((prev) => prev - 1);
       } else if (voteType === "DOWN") setVotesSummary((prev) => prev + 1);
       setCurrentVote(prevVote);
@@ -64,7 +63,6 @@ export default function PostVoteClient({
     onMutate: (voteType: VoteType) => {
       if (currentVote === voteType) {
         if (voteType === "UP") {
-          console.log("onMutate, CurVote=VoteType, UP (-1)");
           setVotesSummary((prev) => prev - 1);
         } else if (voteType === "DOWN") setVotesSummary((prev) => prev + 1);
         setCurrentVote(undefined);
