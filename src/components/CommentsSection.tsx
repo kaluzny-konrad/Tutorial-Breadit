@@ -32,7 +32,7 @@ export default async function CommentsSection({ postId }: Props) {
     <div className="flex flex-col gap-y-4 mt-4">
       <hr className="w-full h-px my-6" />
 
-      <CreateComment />
+      <CreateComment postId={postId} />
 
       <div>
         {comments
@@ -54,7 +54,12 @@ export default async function CommentsSection({ postId }: Props) {
             return (
               <div key={topLevelComment.id} className="flex flex-col">
                 <div className="mb-2">
-                  <PostComment comment={topLevelComment} />
+                  <PostComment
+                    comment={topLevelComment}
+                    postId={postId}
+                    currentVote={topLevelCommentVote}
+                    votesSummary={topLevelCommentVotesSummary}
+                  />
                 </div>
               </div>
             );

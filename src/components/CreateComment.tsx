@@ -10,14 +10,19 @@ import { CommentRequest } from "@/lib/validators/comment";
 import axios, { AxiosError } from "axios";
 import { toast } from "@/hooks/use-toast";
 import { useCustomToast } from "@/hooks/use-custom-toast";
+import { useRouter } from "next/navigation";
 
-type Props = {};
+type Props = {
+  postId: string;
+  replyToId?: string;
+};
 
-export default function CreateComment({}: Props) {
+export default function CreateComment({ postId, replyToId }: Props) {
   const [input, setInput] = useState<string>("");
   const { loginToast } = useCustomToast();
+  const router = useRouter();
 
-  const {} = useMutation({
+  const { mutate: comment, isLoading } = useMutation({
     mutationFn: async ({ postId, text, replyToId }: CommentRequest) => {
       const payload: CommentRequest = {
         postId,
@@ -25,7 +30,7 @@ export default function CreateComment({}: Props) {
         replyToId,
       };
 
-      const { data } = await axios.post(
+      const { data } = await axios.patch(
         "/api/r/subreddit/post/comment",
         payload
       );
@@ -44,6 +49,10 @@ export default function CreateComment({}: Props) {
         variant: "destructive",
       });
     },
+    onSuccess: () => {
+      router.refresh();
+      setInput("");
+    },
   });
 
   return (
@@ -60,7 +69,15 @@ export default function CreateComment({}: Props) {
       </div>
 
       <div>
-        <Button>Post</Button>
+        <Button
+          onClick={() =>
+            comment({ postId: postId, text: input, replyToId: replyToId })
+          }
+          isLoading={isLoading}
+          disabled={input.length === 0}
+        >
+          Post
+        </Button>
       </div>
     </div>
   );
