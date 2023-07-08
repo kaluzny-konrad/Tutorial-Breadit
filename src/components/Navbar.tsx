@@ -5,6 +5,7 @@ import { Icons } from "@/components/Icons";
 import { buttonVariants } from "@/components/ui/Button";
 import UserAccountNav from "@/components/UserAccountNav";
 import SearchBar from "./SearchBar";
+import { User } from "@prisma/client";
 
 export default async function Navbar() {
   const session = await getAuthSession();
@@ -16,7 +17,7 @@ export default async function Navbar() {
     >
       <div className="container max-w-7xl h-full mx-auto flex items-center justify-between gap-2">
         {/* Logo */}
-        <Link href="/" className="flex gap-2 items-center">
+        <Link data-testid="logo" href="/" className="flex gap-2 items-center">
           <Icons.logo className="w-8 h-8 sm:h-6 sm:w-6" />
           <p className="hidden text-zinc-700 text-sm font-medium md:block">
             Breadit
@@ -28,7 +29,11 @@ export default async function Navbar() {
 
         {/* Auth */}
         {session?.user ? (
-          <UserAccountNav user={session.user} />
+          <UserAccountNav
+            username={session.user.username}
+            email={session.user.email}
+            image={session.user.image}
+          />
         ) : (
           <Link href="/sign-in" className={buttonVariants()}>
             Sign In

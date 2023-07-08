@@ -71,7 +71,7 @@ const Page = () => {
             Community names including capitalization cannot be changed.
           </p>
 
-          <div className="relative">
+          <div className="relative grid gap-1">
             <div className="absolute left-0 w-6 inset-y-0 grid text-right items-center">
               <p className="text-sm text-zinc-300 pt-0.5">r/</p>
             </div>

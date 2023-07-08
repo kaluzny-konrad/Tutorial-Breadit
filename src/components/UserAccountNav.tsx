@@ -1,6 +1,5 @@
 "use client";
 
-import { User } from "next-auth";
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 
 import {
@@ -14,17 +13,19 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 
 type Props = {
-  user: Pick<User, "name" | "image" | "email">;
+  username: string | null | undefined;
+  email: string | null | undefined;
+  image: string | null | undefined;
 };
 
-export default function UserAccountNav({ user }: Props) {
+export default function UserAccountNav({ username, email, image }: Props) {
   return (
     <DropdownMenu data-testid="user-account-nav">
       <DropdownMenuTrigger className="flex items-center gap-2">
         <UserAvatar
           user={{
-            name: user.name || null,
-            image: user.image || null,
+            username: username || null,
+            image: image || null,
           }}
           className="h-8 w-8"
         />
@@ -32,10 +33,10 @@ export default function UserAccountNav({ user }: Props) {
       <DropdownMenuContent className="bg-white" align="end">
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
-            {user.name && <p className="font-medium">{user.name}</p>}
-            {user.email && (
+            {username && <p className="font-medium">{username}</p>}
+            {email && (
               <p className="w-[200px] truncate text-sm text-zinc-700">
-                {user.email}
+                {email}
               </p>
             )}
           </div>
