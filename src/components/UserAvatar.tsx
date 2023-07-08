@@ -12,7 +12,7 @@ interface Props extends AvatarProps {
 
 export default function UserAvatar({ user, ...props }: Props) {
   return (
-    <Avatar {...props}>
+    <Avatar {...props} data-testid="user-avatar">
       {user.image ? (
         <div className="relative aspect-square h-full w-full">
           <Image

@@ -45,6 +45,7 @@ export default async function PostVoteServer({
       postId={postId}
       initialVotesSummary={_votesSummary}
       initialVote={_currentVote}
+      data-testid="post-vote-server"
     />
   );
 }

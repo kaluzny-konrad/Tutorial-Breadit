@@ -5,7 +5,10 @@ import UserAuthForm from "@/components/UserAuthForm";
 
 export default function SignUp() {
   return (
-    <div className="container mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
+    <div
+      className="container mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]"
+      data-testid="sign-up"
+    >
       <div className="flex flex-col space-y-2 text-center">
         <Icons.logo className="mx-auto h-6 w-6" />
         <h1 className="text-2xl font-semibold tracking-tight">Sign Up</h1>

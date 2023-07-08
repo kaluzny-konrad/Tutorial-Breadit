@@ -14,6 +14,7 @@ export default function CloseModal() {
       variant={"subtle"}
       onClick={() => router.back()}
       className="h-6 w-6 p-0 rounded-md"
+      data-testid="close-modal"
     >
       <X className="h-4 w-4" />
     </Button>

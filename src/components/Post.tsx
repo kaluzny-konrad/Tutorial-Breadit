@@ -30,7 +30,7 @@ export default function Post({
   const pRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="rounded-md bg-white shadow">
+    <div className="rounded-md bg-white shadow" data-testid="post">
       <div className="px-6 py-4 flex justify-between">
         <PostVoteClient
           postId={post.id}

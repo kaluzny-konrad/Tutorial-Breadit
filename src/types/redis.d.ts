@@ -8,12 +8,3 @@ export type CachedPost = {
   currentVote: VoteType | null;
   createdAt: Date;
 };
-
-export type CachedComment = {
-  id: string;
-  text: string;
-  authorUsername: string;
-  replyToId: string | null;
-  currentVote: VoteType | null;
-  createdAt: Date;
-};

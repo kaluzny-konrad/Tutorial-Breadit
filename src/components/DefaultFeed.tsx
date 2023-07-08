@@ -17,5 +17,5 @@ export default async function DefaultFeed() {
     take: INFINITE_SCROLLING_PAGINATION_RESULTS,
   });
 
-  return <PostFeed initialPosts={posts} />;
+  return <PostFeed initialPosts={posts} data-testid="default-feed" />;
 }

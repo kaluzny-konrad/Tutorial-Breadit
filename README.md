@@ -10,6 +10,7 @@ From course: <https://www.youtube.com/watch?v=mSUKMfmLAt0>
 - 04.07: 6:57:01, 7:13:41
 - 05.07: 7:32:00, 7:38:49, 8:05:27
 - 06.07: 8:20:36
+- 07.07: 8:30:22
 
 ## Tech stack
 

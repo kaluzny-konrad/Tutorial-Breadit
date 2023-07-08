@@ -32,7 +32,11 @@ export default function UserAuthForm({ className, ...props }: Props) {
   };
 
   return (
-    <div className={cn("flex justify-center", className)} {...props}>
+    <div
+      className={cn("flex justify-center", className)}
+      {...props}
+      data-testid="user-auth-form"
+    >
       <Button
         onClick={loginWithGoogle}
         isLoading={isLoading}

@@ -50,7 +50,7 @@ export default function PostFeed({ initialPosts, subredditName }: Props) {
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 
   return (
-    <ul className="flex flex-col col-span-2 space-y-6">
+    <ul className="flex flex-col col-span-2 space-y-6" data-testid="post-feed">
       {posts.map((post, index) => {
         const votesSummary = post.votes.reduce((acc, vote) => {
           if (vote.value === "UP") return acc + 1;

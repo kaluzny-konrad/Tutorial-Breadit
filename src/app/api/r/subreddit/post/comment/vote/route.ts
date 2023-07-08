@@ -1,11 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { redis } from "@/lib/redit";
 import { CommentVoteValidator } from "@/lib/validators/vote";
-import { CachedComment } from "@/types/redis";
 import { z } from "zod";
-
-const CACHE_AFTER_UPVOTES = 1;
 
 export async function PATCH(req: Request) {
   try {
@@ -43,57 +39,20 @@ export async function PATCH(req: Request) {
           where: { commentId_userId: { commentId, userId: session.user.id } },
           data: { type: voteType },
         });
+
+        return new Response("Vote updated", { status: 200 });
       }
-      const votesSummary = comment.votes.reduce((acc, vote) => {
-        if (vote.type === "UP") return acc + 1;
-        if (vote.type === "DOWN") return acc - 1;
-        return acc;
-      }, 0);
+    } else {
+      await db.commentVote.create({
+        data: {
+          type: voteType,
+          commentId: commentId,
+          userId: session.user.id,
+        },
+      });
 
-      //   if (votesSummary > CACHE_AFTER_UPVOTES) {
-      //     const cachePayload: CachedComment = {
-      //       id: comment.id,
-      //       text: comment.text,
-      //       authorUsername: comment.author.username ?? "",
-      //       currentVote: voteType,
-      //       createdAt: comment.createdAt,
-      //       replyToId: comment.replyToId,
-      //     };
-
-      //     await redis.hset(`comment:${comment.id}`, cachePayload);
-      //   }
-
-      return new Response("Vote updated", { status: 200 });
+      return new Response("Vote created", { status: 201 });
     }
-
-    await db.commentVote.create({
-      data: {
-        type: voteType,
-        commentId: commentId,
-        userId: session.user.id,
-      },
-    });
-
-    const votesSummary = comment.votes.reduce((acc, vote) => {
-      if (vote.type === "UP") return acc + 1;
-      if (vote.type === "DOWN") return acc - 1;
-      return acc;
-    }, 0);
-
-    // if (votesSummary > CACHE_AFTER_UPVOTES) {
-    //   const cachePayload: CachedComment = {
-    //     id: comment.id,
-    //     text: comment.text,
-    //     authorUsername: comment.author.username ?? "",
-    //     currentVote: voteType,
-    //     createdAt: comment.createdAt,
-    //     replyToId: comment.replyToId,
-    //   };
-
-    //   await redis.hset(`comment:${comment.id}`, cachePayload);
-    // }
-
-    return new Response("Vote created", { status: 201 });
   } catch (error) {
     if (error instanceof z.ZodError)
       return new Response("Inavlid request data passed", { status: 422 });

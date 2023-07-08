@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
-import { redis } from "@/lib/redit";
+import { redis } from "@/lib/redis";
 import { CachedPost } from "@/types/redis";
 import { db } from "@/lib/db";
 import PostVoteShell from "@/components/post-vote/PostVoteShell";

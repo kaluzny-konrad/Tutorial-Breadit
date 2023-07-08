@@ -4,7 +4,10 @@ import { buttonVariants } from "@/components/ui/Button";
 
 export default function PostVoteShell() {
   return (
-    <div className="flex items-center flex-col pr-6 w-20">
+    <div
+      className="flex items-center flex-col pr-6 w-20"
+      data-testid="post-vote-shell"
+    >
       <div className={buttonVariants({ variant: "ghost" })}>
         <ArrowBigUp className="h-5 w-5 text-zinc-700" />
       </div>

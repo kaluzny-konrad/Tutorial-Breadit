@@ -56,7 +56,7 @@ export default function CreateComment({ postId, replyToId }: Props) {
   });
 
   return (
-    <div className="grid w-full gap-1.5">
+    <div className="grid w-full gap-1.5" data-testid="create-comment">
       <Label htmlFor="comment">Your comment</Label>
       <div className="mt-2">
         <Textarea
@@ -68,7 +68,7 @@ export default function CreateComment({ postId, replyToId }: Props) {
         />
       </div>
 
-      <div>
+      <div className="mt-2 flex justify-end gap-2">
         <Button
           onClick={() =>
             comment({ postId: postId, text: input, replyToId: replyToId })

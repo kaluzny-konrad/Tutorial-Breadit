@@ -36,5 +36,5 @@ export default async function CustomFeed() {
     take: INFINITE_SCROLLING_PAGINATION_RESULTS,
   });
 
-  return <PostFeed initialPosts={posts} />;
+  return <PostFeed initialPosts={posts} data-testid="custom-feed" />;
 }

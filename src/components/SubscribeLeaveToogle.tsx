@@ -92,21 +92,27 @@ export default function SubscribeLeaveToogle({
     },
   });
 
-  return isSubscribed ? (
-    <Button
-      isLoading={isUnsubLoading}
-      onClick={() => unsubscribe()}
-      className="w-full mt-1 mb-4"
-    >
-      Leave Community
-    </Button>
-  ) : (
-    <Button
-      isLoading={isSubLoading}
-      onClick={() => subscribe()}
-      className="w-full mt-1 mb-4"
-    >
-      Join to Community
-    </Button>
+  return (
+    <div data-testid="subscribe-leave-toggle">
+      {isSubscribed ? (
+        <Button
+          data-testid="leave-community"
+          isLoading={isUnsubLoading}
+          onClick={() => unsubscribe()}
+          className="w-full mt-1 mb-4"
+        >
+          Leave Community
+        </Button>
+      ) : (
+        <Button
+          data-testid="join-community"
+          isLoading={isSubLoading}
+          onClick={() => subscribe()}
+          className="w-full mt-1 mb-4"
+        >
+          Join to Community
+        </Button>
+      )}
+    </div>
   );
 }

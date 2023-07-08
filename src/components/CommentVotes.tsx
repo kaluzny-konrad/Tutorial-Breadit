@@ -73,7 +73,7 @@ export default function CommentVotes({
   });
 
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-1" data-testid="comment-votes">
       <Button
         onClick={() => vote("UP")}
         size={"sm"}

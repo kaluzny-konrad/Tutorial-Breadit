@@ -185,7 +185,10 @@ export default function Editor({ subredditId }: Props) {
   const { ref: titleRef, ...titleProps } = register("title");
 
   return (
-    <div className="w-full p-4 bg-zinc-50 rounded-lg border border-zinc-200">
+    <div
+      className="w-full p-4 bg-zinc-50 rounded-lg border border-zinc-200"
+      data-testid="editor"
+    >
       <form
         className="w-fit"
         id="subreddit-post-form"
