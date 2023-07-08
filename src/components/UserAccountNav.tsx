@@ -24,7 +24,7 @@ export default function UserAccountNav({ username, email, image }: Props) {
       <DropdownMenuTrigger className="flex items-center gap-2">
         <UserAvatar
           user={{
-            username: username || null,
+            name: username || null,
             image: image || null,
           }}
           className="h-8 w-8"
